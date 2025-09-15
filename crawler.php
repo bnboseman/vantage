@@ -1,8 +1,9 @@
-<?php 
-
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
-
 use  Vantage\Crawler;
+
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 
 $crawler = Crawler::getInstance();
 $topics = $crawler->getTopics();
