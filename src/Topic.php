@@ -2,16 +2,20 @@
 namespace Vantage;
 
 use GuzzleHttp\Client;
+use Vantage\Crawler;
 
 class Topic {
     private $name;
     private $url;
     private static $searchUrl = "http://www.cochranelibrary.com/home/topic-and-review-group-list.html?page=topic";
+    /**
+     * @var Result[]   array of Result objects
+     */
+    private array $results;
 
     public function __construct(string $name, string $url) {
         $this->name = $name;
         $this->url = $url;
-
     }
 
     /**
@@ -49,7 +53,12 @@ class Topic {
         return self::$searchUrl;
     }
 
-    public function fetchResults() {
-        var_dump ($this->getUrl());
+    public function setResults() {
+        $client = Crawler::getInstance();
+        $this->results = $client->getTopicResults($this);
+    }
+
+    public function getResults() {
+        return $this->results;
     }
 }

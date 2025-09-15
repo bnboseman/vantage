@@ -25,8 +25,21 @@ if (!is_numeric($input) || !isset($topics[$input])) {
     exit(1);
 }
 
-$number = (int)$input;
-if ($topics[$number]) {
-    ($topics[$number])->fetchResults();
+echo "\nFetching results for '{$topics[$input]->getName()}'...\n";
+$topics[$input]->setResults();
+
+echo count($topics[$input]->getResults()) .  " reviews have been found.\n";
+
+echo "Enter a filename to save the results (e.g. cochrane_reviews.txt): \n";
+$fileName = trim(fgets(STDIN));
+
+if (empty($fileName)) {
+    $fileName = 'cochrane_reviews.txt';
+}
+
+$fp = fopen($fileName, 'w');
+
+foreach ($topics[$input]->getResults() as $r) {
+    fwrite($fp, (string)$r . PHP_EOL . PHP_EOL);
 }
 
