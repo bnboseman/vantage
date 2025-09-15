@@ -38,9 +38,14 @@ if (empty($fileName)) {
     $fileName = 'cochrane_reviews.txt';
 }
 
-$fp = fopen($fileName, 'w');
+$fileName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $fileName);
+$savePath = __DIR__ . DIRECTORY_SEPARATOR . $fileName;
+
+$fp = fopen($savePath, 'w');
 
 foreach ($topics[$input]->getReviews() as $r) {
     fwrite($fp, (string)$r . PHP_EOL . PHP_EOL);
 }
+
+echo "File as been saved to $savePath\n";
 
