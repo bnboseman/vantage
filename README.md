@@ -12,10 +12,13 @@ This project contains two parts:
 - PHP **8.1+**
 - [Composer](https://getcomposer.org/)
 - Internet connection (the crawler fetches live data from Cochrane)
+
 ### React FrontEnd
 - Node.js **(optional)** if you want to run a local static server
 - Any modern web browser (Chrome, Firefox, Safari, Edge)
+
 ---
+
 ## Installation
 
 ### 1. Clone the repository
@@ -33,8 +36,8 @@ composer install
 ```bash
 npm install
 ```
-
 ---
+
 # Cochrane Crawler
   
 ## Features
@@ -137,11 +140,6 @@ The saved file can be opened in any text editor.
 ---
 
 # React Frontend
-## Requirements
-- Node.js **16+**
-- npm or yarn
-- 
----
 
 ## Setup
 
