@@ -3,7 +3,7 @@ namespace Vantage;
 
 use Carbon\Carbon;
 
-class Result
+class Review
 {
     private $url;
     private $title;

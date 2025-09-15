@@ -78,9 +78,9 @@ class Crawler
         return $this->topics;
     }
 
-    public function getTopicResults(Topic $topic): array
+    public function getTopicReviews(Topic $topic): array
     {
-        $results     = [];
+        $reviews     = [];
         $seen        = [];
         $currentUrl  = $topic->getUrl();
         $totalPages  = null;
@@ -142,7 +142,7 @@ class Crawler
 
                     if (!isset($seen[$href])) {
                         $seen[$href] = true;
-                        $results[] = new Result(
+                        $reviews[] = new Review(
                             $href,
                             $topic->getName(),
                             $title,
@@ -181,7 +181,7 @@ class Crawler
             $currentUrl = $nextUrl;
         }
 
-        return $results;
+        return $reviews;
     }
 
     /** Safe: return first matched node or null (no ->first()) */

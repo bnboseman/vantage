@@ -9,9 +9,9 @@ class Topic {
     private $url;
     private static $searchUrl = "http://www.cochranelibrary.com/home/topic-and-review-group-list.html?page=topic";
     /**
-     * @var Result[]   array of Result objects
+     * @var Review[]   array of Review objects
      */
-    private array $results;
+    private array $reviews;
 
     public function __construct(string $name, string $url) {
         $this->name = $name;
@@ -53,12 +53,12 @@ class Topic {
         return self::$searchUrl;
     }
 
-    public function setResults() {
+    public function setReviews() {
         $client = Crawler::getInstance();
-        $this->results = $client->getTopicResults($this);
+        $this->reviews = $client->getTopicReviews($this);
     }
 
-    public function getResults() {
-        return $this->results;
+    public function getReviews() {
+        return $this->reviews;
     }
 }

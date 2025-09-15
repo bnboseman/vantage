@@ -26,12 +26,12 @@ if (!is_numeric($input) || !isset($topics[$input])) {
     exit(1);
 }
 
-echo "\nFetching results for '{$topics[$input]->getName()}'...\n";
-$topics[$input]->setResults();
+echo "\nFetching reviews for '{$topics[$input]->getName()}'...\n";
+$topics[$input]->setReviews();
 
-echo count($topics[$input]->getResults()) .  " reviews have been found.\n";
+echo count($topics[$input]->getReviews()) .  " reviews have been found.\n";
 
-echo "Enter a filename to save the results (e.g. cochrane_reviews.txt): \n";
+echo "Enter a filename to save the reviews (e.g. cochrane_reviews.txt): \n";
 $fileName = trim(fgets(STDIN));
 
 if (empty($fileName)) {
@@ -40,7 +40,7 @@ if (empty($fileName)) {
 
 $fp = fopen($fileName, 'w');
 
-foreach ($topics[$input]->getResults() as $r) {
+foreach ($topics[$input]->getReviews() as $r) {
     fwrite($fp, (string)$r . PHP_EOL . PHP_EOL);
 }
 
